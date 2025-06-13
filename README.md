@@ -1,6 +1,6 @@
-# STRUCTURE Analysis Data Preparation Pipeline
+# Genetic Diversity Analyses of Eastern Africa Finger Millet Blast Fungus
 
-This pipeline processes filtered SNP genotype data and prepares it for analysis with the software **[STRUCTURE](https://web.stanford.edu/group/pritchardlab/structure.html)**. The workflow includes marker extraction, SNP filtering, genotype cleaning, allele conversion, data transposition, sample filtering, and final formatting into STRUCTURE-compatible format.
+This pipeline processes filtered SNP genotype data and prepares it for analysis with the software **[STRUCTURE](https://web.stanford.edu/group/pritchardlab/structure.html)** as well as AMOVA and FST analyses. The workflow includes marker extraction, SNP filtering, genotype cleaning, allele conversion, data transposition, sample filtering, and final formatting into STRUCTURE-compatible format.
 
 ---
 
