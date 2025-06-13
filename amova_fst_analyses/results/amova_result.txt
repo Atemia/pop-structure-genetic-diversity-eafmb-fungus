@@ -1,0 +1,19 @@
+$call
+ade4::amova(samples = xtab, distances = xdist, structures = xstruct)
+
+$results
+                 Df   Sum Sq   Mean Sq
+Between samples   5  4293769 858753.76
+Within samples  220 10001020  45459.18
+Total           225 14294788  63532.39
+
+$componentsofcovariance
+                               Sigma        %
+Variations  Between samples 23038.93  33.6344
+Variations  Within samples  45459.18  66.3656
+Total variations            68498.11 100.0000
+
+$statphi
+                       Phi
+Phi-samples-total 0.336344
+

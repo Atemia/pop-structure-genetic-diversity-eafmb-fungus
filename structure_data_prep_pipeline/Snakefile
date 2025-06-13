@@ -1,0 +1,65 @@
+configfile: "config.yaml"
+
+rule all:
+    input:
+        "results/structure_174300_snps.txt"
+
+rule clean_raw_data:
+    input:
+        "data/txt_file_with_labs_5PercAF_5PercH_20PercmissInSNPandSample_StepSetAs8_E2ref.txt"
+    output:
+        "data/data_with_markers.txt"
+    shell:
+        """
+        sed 's/"//g' {input} | cut -f 3- | cut -f 1,3,4,9- > {output}
+        """ 
+
+rule filter_snps:
+    input:
+        "data/data_with_markers.txt"
+    output:
+        "data/snps_only.txt"
+    script:
+        "scripts/filter_snps.py"
+
+rule replace_missing_codes:
+    input:
+        "data/snps_only.txt"
+    output:
+        "data/snp_matrix_cleaned.txt"
+    shell:
+        """
+        sed 's/H/-/g' {input} | sed 's/D/-/g' > data/snps_only_HD.txt
+        cut -f 1-3 data/snps_only_HD.txt > data/meta_snps.txt
+        cut -f 4- data/snps_only_HD.txt | sed 's/C/-/g' > data/genotype_matrix.txt
+        paste data/meta_snps.txt data/genotype_matrix.txt > {output}
+        """ 
+
+rule convert_to_real_alleles:
+    input:
+        "data/snp_matrix_cleaned.txt"
+    output:
+        "data/real_seq_snps.txt"
+    script:
+        "scripts/convert_to_real_alleles.py"
+
+rule transpose_and_filter:
+    input:
+        "data/real_seq_snps.txt",
+        "data/unwanted_samples.txt"
+    output:
+        "data/cleaned_transposed.txt"
+    shell:
+        """
+        cut -f 4- {input[0]} > data/genotype_only.txt
+        datamash transpose < data/genotype_only.txt > data/transposed_snps.txt
+        grep -Evf {input[1]} data/transposed_snps.txt > {output}
+        """ 
+
+rule format_structure:
+    input:
+        "data/cleaned_transposed.txt"
+    output:
+        "results/structure_174300_snps.txt"
+    script:
+        "scripts/format_structure.py"

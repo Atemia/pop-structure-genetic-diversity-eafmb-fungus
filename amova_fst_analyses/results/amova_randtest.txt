@@ -1,0 +1,11 @@
+Monte-Carlo test
+Call: as.randtest(sim = res, obs = sigma[1])
+
+Observation: 23038.93 
+
+Based on 1000 replicates
+Simulated p-value: 0.000999001 
+Alternative hypothesis: greater 
+
+     Std.Obs  Expectation     Variance 
+4.621861e+01 7.833622e+00 2.483107e+05 
