@@ -1,3 +1,0 @@
-amova_fst_analyses/data/174300_r_snps.txt filter=lfs diff=lfs merge=lfs -text
-amova_fst_analyses/data/structure_174300_snps.txt filter=lfs diff=lfs merge=lfs -text
-structure_data_prep_pipeline/data/txt_file_with_labs_5PercAF_5PercH_20PercmissInSNPandSample_StepSetAs8_E2ref.txt filter=lfs diff=lfs merge=lfs -text
