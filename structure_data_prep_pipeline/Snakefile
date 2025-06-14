@@ -52,7 +52,7 @@ rule transpose_and_filter:
     shell:
         """
         cut -f 4- {input[0]} > data/genotype_only.txt
-        datamash transpose < data/genotype_only.txt > data/transposed_snps.txt
+        datamash --no-strict transpose < data/genotype_only.txt > data/transposed_snps.txt
         grep -Evf {input[1]} data/transposed_snps.txt > {output}
         """ 
 

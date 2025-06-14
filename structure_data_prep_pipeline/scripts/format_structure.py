@@ -6,7 +6,7 @@ output = snakemake.output[0]
 df = pd.read_csv(file, sep='\t', lineterminator='\n', header=None)
 
 positions_processed = 0
-for col_index, col_data in df.iteritems():
+for col_index, col_data in df.items():
     if col_index == 0:
         continue
     unique = sorted(list(set(col_data.values)))
